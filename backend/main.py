@@ -395,6 +395,9 @@ def login(response: Response, fresh: bool = Query(default=False)) -> RedirectRes
         "auth_type": "reauthorize" if fresh else "rerequest",
     }
     redirect = RedirectResponse(f"{FACEBOOK_OAUTH_URL}?{urlencode(params)}")
+    redirect.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    redirect.headers["Pragma"] = "no-cache"
+    redirect.headers["Expires"] = "0"
     redirect.set_cookie(
         "instagram_dashboard_user",
         user_id,
@@ -438,6 +441,9 @@ async def callback(
         return make_error_redirect(exc.message)
 
     redirect = RedirectResponse(f"{FRONTEND_URL}/?connected=1&session_token={user_id}")
+    redirect.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    redirect.headers["Pragma"] = "no-cache"
+    redirect.headers["Expires"] = "0"
     redirect.set_cookie(
         "instagram_dashboard_user",
         user_id,
