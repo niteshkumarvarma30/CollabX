@@ -399,8 +399,8 @@ def login(response: Response, fresh: bool = Query(default=False)) -> RedirectRes
         "instagram_dashboard_user",
         user_id,
         httponly=True,
-        samesite="lax",
-        secure=False,
+        samesite="none",
+        secure=True,
         max_age=60 * 60 * 8,
     )
     return redirect
@@ -442,8 +442,8 @@ async def callback(
         "instagram_dashboard_user",
         user_id,
         httponly=True,
-        samesite="lax",
-        secure=False,
+        samesite="none",
+        secure=True,
         max_age=60 * 60 * 8,
     )
     return redirect
