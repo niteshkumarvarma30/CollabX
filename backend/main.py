@@ -33,6 +33,7 @@ DEFAULT_SCOPES = [
     "pages_read_engagement",
     "instagram_basic",
     "instagram_manage_insights",
+    "business_management",
 ]
 SCOPES = [
     scope.strip()
