@@ -1,432 +1,111 @@
-# Instagram Insights Dashboard (Multi-user SaaS)
+# Instagram Insights Dashboard (CollabX)
 
-A local full-stack Instagram analytics dashboard built with:
+A full-stack Instagram analytics dashboard (SaaS) built to let users connect their Instagram Professional/Business accounts via Meta OAuth and view detailed engagement insights.
 
-- React + Vite frontend
-- FastAPI backend
-- Meta/Facebook OAuth 2.0 authorization code flow
-- Instagram Graph API
-- Local SQLite persistence
+---
 
-Project location on this computer:
+## 🚀 What We Have Done (Recent Upgrades & Fixes)
 
-```txt
-C:\Users\varni\Documents\Codex\2026-04-29\build-a-full-stack-application-called
+We successfully took the application from a local-only prototype and fully deployed it to production with robust, stateful multi-user architecture:
+
+1. **Production Deployment on Render**:
+   - **Frontend**: Deployed as a static site on Render (`collabx-web`).
+   - **Backend**: Deployed as a Python FastAPI service on Render (`collabx-api`).
+
+2. **Persistent Database Migration (Supabase)**:
+   - Render's free tier spins down servers after inactivity, which previously cleared all in-memory OAuth states and local SQLite database files.
+   - **Solution**: Migrated all sessions and OAuth state tracking to a hosted **PostgreSQL database on Supabase**. Your data and sessions now survive server restarts.
+
+3. **Secure Auth Architecture (Bypassing Cookie Blocks)**:
+   - Modern browsers block cross-site cookies (Third-Party Cookies) between different domains (e.g., frontend on `render.com` communicating with backend on `onrender.com`).
+   - **Solution**: Re-engineered authentication to use a **URL-based redirection token pass** combined with secure **`localStorage`** on the client side.
+
+4. **Business Suite / Portfolio Integration**:
+   - If a page is connected to a Meta Business Portfolio (Business Suite), Meta filters it out from the standard `/me/accounts` endpoint.
+   - **Solution**: Added the **`business_management`** scope to the OAuth flow and configuration, enabling the dashboard to fetch business-owned pages successfully.
+
+5. **Meta Privacy Policy Compliance**:
+   - Created and published a static compliance page (`privacy.html`) to satisfy Meta's strict production security checks.
+
+---
+
+## ⚙️ Architecture & Data Pipeline
+
+```text
+[React Frontend] (collabx-web.onrender.com)
+       │
+       ▼ (Fetch analytics / Trigger OAuth)
+[FastAPI Backend] (collabx-api-1d0a.onrender.com)
+       │
+       ├─► [Supabase PostgreSQL DB] (oauth_states, user_sessions)
+       │
+       └─► [Meta / Instagram Graph API] (v25.0)
 ```
 
-## Product Goal
+### Data Fetching Steps:
+1. **User Login**: `/login` generates a secure unique state stored in Supabase, then redirects the user to Meta's OAuth dialog.
+2. **Callback**: `/callback` receives the authorization code, exchanges it for a **User Access Token**, and fetches user info.
+3. **Page Discovery**: Requests `/me/accounts` to retrieve managed Facebook Pages.
+4. **Instagram Account Lookup**: Requests `/{PAGE_ID}?fields=instagram_business_account` to find the linked Instagram Business/Creator account.
+5. **Media & Insights**: Fetches the last 25 posts and polls `/{MEDIA_ID}/insights` for engagement metrics (likes, comments, reach, saves, shares).
+6. **Dashboard Stats**: Engagement Rate is calculated as:
+   $$\text{Engagement Rate} = \frac{\text{Likes} + \text{Comments} + \text{Saves} + \text{Shares}}{\text{Reach}}$$
 
-Users can open the web app, click **Connect Instagram**, authorize through Meta/Facebook OAuth, and view analytics for their connected Instagram Business or Creator account.
+---
 
-Users never enter:
+## 🛡️ Going Public: Removing the Developer Account Requirement
 
-- Instagram passwords
-- Facebook passwords
-- Meta app secrets
-- Access tokens
+Currently, the app is in **Development Mode** (or Live Mode without approved permissions). Under this state, **only users added as Admins, Developers, or Testers who have registered Meta Developer accounts can log in.**
 
-All account access happens through OAuth.
+To make the app publicly available so **anyone** can log in with a normal Facebook account without creating a developer account, you must complete the **Meta App Review** process.
 
-## Architecture
+### Step-by-Step App Review & Upgrade Guide
 
-```txt
-React frontend
-  -> FastAPI backend
-  -> Meta OAuth / Facebook Login for Business
-  -> Meta Graph API
-  -> Instagram Graph API
-  -> SQLite local database
-```
+#### Step 1: Ensure Prerequisites are Completed
+- [x] **Privacy Policy URL** is set in Meta Settings (Basic) pointing to `https://<your-frontend>.onrender.com/privacy.html`.
+- [x] **Category** is set to **Business and Pages** in Meta Settings.
+- [x] **App Icon** (1024x1024) is uploaded.
 
-## Folder Structure
+#### Step 2: Request Permissions in App Review
+Go to your **Meta Developer Dashboard** → **App Review** → **Permissions and Features**, and request **Advanced Access** for the following 5 permissions:
+1. `pages_show_list` (To list the user's Facebook Pages)
+2. `pages_read_engagement` (To read Page-level metrics)
+3. `instagram_basic` (To read Instagram profile info)
+4. `instagram_manage_insights` (To read post-level reach, impressions, engagement)
+5. `business_management` (To read Pages connected to Meta Business portfolios)
 
-```txt
-backend/
-  main.py
-  requirements.txt
-  .env
-  instagram_dashboard.sqlite3
+#### Step 3: Record a Screencast Video
+Meta requires a short video (under 2-3 minutes) demonstrating how the app uses these permissions. 
+* **What to show in the video**:
+  1. Show your website landing page.
+  2. Click **Connect Instagram** and show the Facebook Login screen.
+  3. Log in, select a page, select an Instagram account, and grant the permissions.
+  4. Show the dashboard loading and displaying the follower count, posts table, and engagement rates.
+  5. *Explain in the video description*: "We use `pages_show_list` and `business_management` to find the user's linked Facebook Page, which connects us to their Instagram Business ID via `instagram_basic`. We then fetch engagement data using `instagram_manage_insights` to present an aggregated analytics dashboard."
 
-frontend/
-  App.jsx
-  index.html
-  package.json
-  src/
-    main.jsx
-    styles.css
+#### Step 4: Submit for Verification
+* If you are running a registered business, you will need to complete **Business Verification**.
+* If you are an individual developer, you can verify using your **personal ID** (Meta Individual Verification).
+* Submit the review request. Meta typically takes **2 to 5 business days** to approve.
 
-run_all.bat
-start_backend.bat
-start_frontend.bat
-README.md
-```
+Once approved, toggle the app to **Live Mode** if it isn't already. **Anyone in the world can now log in instantly!**
 
-## Meta Developer Setup
+---
 
-Create/configure one Meta app as the SaaS owner. Normal dashboard users should not create their own developer app.
+## 💻 Running the App Locally
 
-Recommended app creation choices:
-
-```txt
-Use case: Other
-App type: Business
-```
-
-Add these products:
-
-- Facebook Login for Business
-- Instagram
-
-Configure OAuth redirect URI:
-
-```txt
-http://localhost:8000/callback
-```
-
-For production, use your real HTTPS URL, for example:
-
-```txt
-https://yourdomain.com/callback
-```
-
-Required permissions/scopes:
-
-```txt
-pages_show_list
-pages_read_engagement
-instagram_basic
-instagram_manage_insights
-```
-
-Important Meta notes:
-
-- In Development mode, only app Admins/Developers/Testers can authorize.
-- For real customers, the app must be in Live mode and required permissions may need Meta App Review.
-- Users still need a Facebook Page connected to an Instagram Business or Creator account.
-- The app UI can request permissions, but it cannot add/approve permissions in Meta Developer Dashboard.
-
-## Environment Configuration
-
-Edit:
-
-```txt
-backend/.env
-```
-
-Example:
-
+### 1. Configure Local Environment
+Create/edit `backend/.env`:
 ```env
-META_APP_ID=your_meta_app_id
-META_APP_SECRET=your_meta_app_secret
+META_APP_ID=1519997772927886
+META_APP_SECRET=da1ead8646789489f8db0c489700cf95
 META_GRAPH_VERSION=v25.0
 FRONTEND_URL=http://localhost:5173
-META_PAGE_ID=your_page_id_optional_fallback
-META_SCOPES=pages_show_list,pages_read_engagement,instagram_basic,instagram_manage_insights
+DATABASE_URL=postgresql://postgres:<password>@db.mpxgkhwlgmiclmpylupp.supabase.co:5432/postgres
+META_SCOPES=pages_show_list,pages_read_engagement,instagram_basic,instagram_manage_insights,business_management
 ```
 
-`META_APP_SECRET` must stay only in the backend. Do not put it in frontend code.
-
-`META_PAGE_ID` is optional. It is useful when Meta returns `0` pages from `/me/accounts`, but a specific Page ID is accessible through `/{PAGE_ID}`.
-
-## Install Dependencies
-
-Backend:
-
-```powershell
-cd C:\Users\varni\Documents\Codex\2026-04-29\build-a-full-stack-application-called\backend
-python -m pip install -r requirements.txt
-```
-
-Frontend:
-
-```powershell
-cd C:\Users\varni\Documents\Codex\2026-04-29\build-a-full-stack-application-called\frontend
-npm install
-```
-
-If PowerShell blocks `npm`, use:
-
-```powershell
-npm.cmd install
-```
-
-## Run Locally
-
-Option 1: double-click:
-
-```txt
-run_all.bat
-```
-
-This opens two command windows:
-
-- Backend: `http://127.0.0.1:8000`
-- Frontend: `http://127.0.0.1:5173`
-
-Option 2: run manually.
-
-Backend:
-
-```powershell
-cd C:\Users\varni\Documents\Codex\2026-04-29\build-a-full-stack-application-called\backend
-python -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
-
-Frontend:
-
-```powershell
-cd C:\Users\varni\Documents\Codex\2026-04-29\build-a-full-stack-application-called\frontend
-npm.cmd run dev -- --host 127.0.0.1 --port 5173
-```
-
-Open:
-
-```txt
-http://127.0.0.1:5173/
-```
-
-## OAuth Flow
-
-1. User clicks **Connect Instagram**.
-2. Frontend redirects to backend:
-
-```txt
-GET /login
-```
-
-3. Backend redirects to Meta OAuth:
-
-```txt
-https://www.facebook.com/v25.0/dialog/oauth
-```
-
-with scopes:
-
-```txt
-pages_show_list,pages_read_engagement,instagram_basic,instagram_manage_insights
-```
-
-4. Meta redirects back:
-
-```txt
-GET /callback?code=...
-```
-
-5. Backend exchanges the code for an access token.
-6. Backend fetches Pages, Instagram account, media, and insights.
-7. Frontend displays the dashboard.
-
-## Data Pipeline
-
-Backend requests:
-
-```txt
-GET /me/accounts
-GET /{PAGE_ID}?fields=instagram_business_account
-GET /{IG_USER_ID}?fields=id,username,followers_count
-GET /{IG_USER_ID}/media?fields=id,caption
-GET /{MEDIA_ID}/insights?metric=reach,likes,comments,saved,shares
-```
-
-If `/me/accounts` returns no pages, the app also tries:
-
-```txt
-GET /me?fields=accounts.limit(25){id,name,access_token,instagram_business_account}
-```
-
-If `META_PAGE_ID` is set, it can fallback to:
-
-```txt
-GET /{META_PAGE_ID}?fields=id,name,access_token,instagram_business_account
-```
-
-## Dashboard Calculations
-
-Engagement rate:
-
-```txt
-(likes + comments + saved + shares) / reach
-```
-
-If reach is `0`, engagement rate is returned as `0`.
-
-## Backend API Endpoints
-
-```txt
-GET /health
-```
-
-Health check.
-
-```txt
-GET /login
-```
-
-Starts Meta OAuth.
-
-```txt
-GET /login?fresh=true
-```
-
-Starts a stronger reconnect flow using Meta reauthorization.
-
-```txt
-GET /callback
-```
-
-OAuth callback from Meta.
-
-```txt
-GET /fetch-data
-```
-
-Returns Instagram dashboard data for the connected browser session.
-
-```txt
-GET /debug/meta
-```
-
-Shows required permission status and Page results from Meta. Does not expose tokens.
-
-```txt
-GET /debug/page/{page_id}
-```
-
-Tests whether the current OAuth token can access a specific Facebook Page ID.
-
-## Frontend Features
-
-- Connection wizard
-- Connect Instagram button
-- Reconnect with permissions button
-- Loading spinner
-- Friendly error messages
-- Total posts
-- Followers count
-- Post table
-- Sort by engagement
-- Top-performing post highlight
-
-## Local Storage
-
-Connected sessions are stored in:
-
-```txt
-backend/instagram_dashboard.sqlite3
-```
-
-This lets a connected browser session survive backend restarts.
-
-For production, replace this with a secure hosted database and encrypt tokens.
-
-## Common Problems
-
-### Invalid Scopes
-
-Error:
-
-```txt
-Invalid Scopes: pages_show_list, pages_read_engagement, instagram_basic, instagram_manage_insights
-```
-
-Cause:
-
-The Meta app does not support those permissions yet.
-
-Fix:
-
-- Use a Business-compatible Meta app.
-- Add Facebook Login for Business.
-- Add Instagram product.
-- Add/request the required permissions.
-- Add your user as Admin/Developer/Tester while in Development mode.
-
-### No Facebook Pages Returned
-
-Error:
-
-```txt
-Meta returned 0 Facebook Pages from /me/accounts
-```
-
-Possible causes:
-
-- Facebook user does not have full Page access.
-- App is in Development mode and user is not an app role member.
-- Page is not selected during Meta OAuth.
-- Instagram account is not connected to the Facebook Page.
-- Page is available only through direct Page ID lookup.
-
-Useful diagnostic:
-
-```txt
-http://localhost:8000/debug/page/YOUR_PAGE_ID
-```
-
-### Backend Restarted And Session Missing
-
-If the browser cookie is missing or a different browser is used, connect again.
-
-SQLite stores tokens locally, but the user still needs the same session cookie.
-
-### Changed Meta App ID
-
-If `META_APP_ID` changes, reconnect. Tokens from the old Meta app cannot be used with the new Meta app.
-
-## Opening In Another IDE
-
-Open this folder as the project root:
-
-```txt
-C:\Users\varni\Documents\Codex\2026-04-29\build-a-full-stack-application-called
-```
-
-Recommended terminal layout:
-
-Terminal 1:
-
-```powershell
-cd backend
-python -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
-
-Terminal 2:
-
-```powershell
-cd frontend
-npm.cmd run dev -- --host 127.0.0.1 --port 5173
-```
-
-Then open:
-
-```txt
-http://127.0.0.1:5173/
-```
-
-## Security Notes
-
-- Never expose `META_APP_SECRET` in frontend code.
-- Never ask users to paste access tokens.
-- Never ask users for Facebook/Instagram passwords.
-- OAuth tokens should be encrypted in production.
-- Use HTTPS in production.
-- Replace local SQLite with a production database for real SaaS usage.
-
-## Production Checklist
-
-- Use a real domain.
-- Set production redirect URI:
-
-```txt
-https://yourdomain.com/callback
-```
-
-- Configure Privacy Policy URL in Meta.
-- Configure Terms URL if required.
-- Submit required permissions for App Review.
-- Switch Meta app to Live mode.
-- Use HTTPS.
-- Store tokens encrypted.
-- Add user accounts/auth for your SaaS.
-- Add token refresh/expiration handling.
-- Add background sync and rate-limit handling.
+### 2. Run the Servers
+Double click **`run_all.bat`** in the root directory. This will start:
+* **Backend**: `http://127.0.0.1:8000`
+* **Frontend**: `http://127.0.0.1:5173`
