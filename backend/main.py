@@ -201,11 +201,19 @@ async def exchange_code_for_token(code: str) -> str:
 
 
 async def get_first_page(user_access_token: str) -> dict[str, Any]:
+    # Debug print the user info
+    try:
+        me_info = await graph_get("/me", user_access_token, {"fields": "id,name"})
+        print(f"[DEBUG OAUTH] Connected Facebook User Name: {me_info.get('name')}, ID: {me_info.get('id')}")
+    except Exception as e:
+        print(f"[DEBUG OAUTH] Failed to get /me user info: {e}")
+
     payload = await graph_get(
         "/me/accounts",
         user_access_token,
         {"fields": "id,name,access_token"},
     )
+    print(f"[DEBUG OAUTH] Raw payload from /me/accounts: {payload}")
     pages = payload.get("data", [])
     if not pages:
         fallback = await graph_get(
@@ -213,6 +221,7 @@ async def get_first_page(user_access_token: str) -> dict[str, Any]:
             user_access_token,
             {"fields": "accounts.limit(25){id,name,access_token,instagram_business_account}"},
         )
+        print(f"[DEBUG OAUTH] Raw payload from fallback /me/accounts request: {fallback}")
         pages = (fallback.get("accounts") or {}).get("data", [])
     if not pages and CONFIGURED_PAGE_ID:
         try:
