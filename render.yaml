@@ -1,0 +1,38 @@
+services:
+  # -------------------------
+  # BACKEND: FastAPI Service
+  # -------------------------
+  - type: web
+    name: collabx-api
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: FRONTEND_URL
+        value: https://collabx-web.onrender.com
+      # The following must be set manually in the Render Dashboard!
+      - key: META_APP_ID
+        sync: false
+      - key: META_APP_SECRET
+        sync: false
+      - key: META_PAGE_ID
+        sync: false
+      - key: META_GRAPH_VERSION
+        value: v25.0
+      - key: DATABASE_URL
+        sync: false
+
+  # -------------------------
+  # FRONTEND: React Static Site
+  # -------------------------
+  - type: web
+    name: collabx-web
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      # The backend URL. We'll set this manually to the actual generated Render URL.
+      - key: VITE_API_URL
+        sync: false

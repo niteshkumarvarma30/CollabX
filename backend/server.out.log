@@ -1,0 +1,104 @@
+INFO:     127.0.0.1:62161 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62161 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55268 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53829 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53389 - "GET /login HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:53463 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60152 - "GET /login HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:57681 - "GET /login HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:57681 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63482 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55890 - "GET /login HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:56338 - "GET /login HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:64270 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58630 - "GET /login HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:51964 - "GET /login HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:51968 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51969 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50578 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54894 - "GET /callback?code=AQAQTi7bYfPHihavApK7UzSKeZRheCl5gIrEcg6P-DaFL6zhc9aiqnDhmqQx9O7L5sp4Lh9SAuMBdP2F-u248pgxV10J08thdkDE_QrR42tC-iCnNpO0hiQ_7j-VwFReldJC70Oac2CEyTkOgyeroFQ4IKiEVwU86w9DjbqH0bDmopdElThMm7GKeysMg_2u8bUljRGUzMVvkTyQAX1FmV4GmJeiJ93lm9V33tTIkbdoPoylioeqF1Buqy2S-NieWYMQh7tkYGx9mFKWl7w1zhXZGztcA-cCIkKaxzuoj7A6Dg-tz_pYFTV5ll6gzeDfynIpOEQ-bRAiJYS-n4RXn8nmqoVf-QGF3evxxSFjdw3NjOOrr1F4PnE4Dv32avXdcnHB6UX12D2K7_SPzljiuPIkzyvyqyqzhybHiNSWoGxNc9vAmNN6cv3vSAl8OOzOzNU&state=00a9a8b8-f327-4154-a181-47b498c6bdf9 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:58176 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:62035 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62037 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50688 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50688 - "GET /callback?code=AQDzPOaYzQepeo8mw5Ourxt-Hv1uD-UDk4h0-wsBNXpJPo6ZpOmldF2E8g1Af_OLnv79zmY8JN8q6KWnjPSccchsQhu0b5bptAXszuvdZnQrpn-2-nlENhv8s4nVP6aPoOO3W5J8KVHwoTSpPz3r3FmkjyT7g8c2GIerpFARehPbf9ZKkEoRexqZS4IicCKE7oNavUFa3XDmEeGT5gOKPM07DJzTCyrq8gzRcZdQjsvmi53KKOJxrfMNLkNugYh2Wjjlxmmuw73J5slI_e9Ybe8bGIMmDKpnq9UvIK4qcfjbtPddq2-nXgdFKHX60P9VeoBVcJSZGcpphPfF7msrg139WBfdJWmMBgtffwW7gP12CGBwxzuQVJ_5RHgktqMMpJxn4zyFnTfEY_iyGLyHYoiY7FJoleMjWykOq_SC2RZJ80nAQ9yqJjmpjogLQK6P2ts&state=391dda94-5df0-4063-b1b4-9ee32647be4f HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:57416 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:57416 - "GET /callback?code=AQAu0T4SOwwBk1E5FI18RF3tJ-XaNTfyw54SUhtxsLwS8CwUQaD_ZTzJM_XsMqCOS95x42MjoQFQArPwqxoxc4BdpXBV751UkUHoFH1Xnrxi9xM3cUH3rAME5Hj_6SyYJporMXXXzOF_jL1IWKsNaYYK-JHySHuyrUV0nHl2eUbj71-vqyCGawR-NpC3gS1NnbxWBEFpSoK0uw5ySpUlgcasCIBjGfHTaZGXTkjHJOSbmoetuL-zvNWwH2dg50spOMhYabXYSojxC9OYgq1tz3hAqs9fS5m1q_tt0jbP-2LTDywoDHyTDWpZMeJ_c8Ll9Q89W5eDBG7ogl_325quhQmaDsw4LQ6re4ZuortWxdVX00E2KBzYbN_sEIiPMeLuisntMCZaYI9NfU8-kA_Z9buQ6pWD5ncZuZ6Iq7wQp1nrIoRtJ5rutdwmRKW4Z_HFVaI&state=6e13d5c8-e0a7-430a-bcac-78a14ab10844 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:61101 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50035 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54412 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51031 - "GET /callback?code=AQCq10FQqTsqMuUgtBzdHTNtJiaLTtk3UU7bgHk-dnYEb8IfxNxUBWOY92IJjxhrlNCw2YEcqyVKPlXSGsOwdRAt6q91xQUSSFkBkNpEZZlHURGFNsAYRnbUaEKP0YqlUgqOSIRLS6WB137kuAihWix87i-POjKqtFFgtOqO8NZSVqm210BMgo2j6sUYVS9_rntRRXpTDnUtIEkSG7sFcrDpRatC1WYZrqmZLpD4eY0KGh5ZEioW-MfS1Eb1z4ke2tsGGV8QWh60hBhjteaGFWRSMUYxAxHSGGWSEvw4R39UMxlRd4lPwPdH_LGQVYiXvbRQBKnSwLMq3yhOCSnOAK0XEqLtTPBnMIW7GquzTr5kHSrwoxc0s3qUPLeAhc74BEefdQD4CSDMgTTNEehwD2Yf846SNDL0xCSIArHjcaKTQxtapd3G4WcuP2UmatUBM6A&state=cc17f2b3-b594-4bac-bc52-ac3399daa76c HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:62352 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:62352 - "GET /callback?code=AQDB07U19CnLPXFizoMIP-mym1sJBxypFvcX1imYLd5XJXWRlW60TcjGFX_KUq0OyvYQUO7THSDF_DwPJ9eq5LKSPa1M1SRsb_tVNUkSGAMtLjirh2ps9R9d0Mz9NWu_lFdGrs8JRXtYBZXBj2972uUi9QnQAVy_bi8taE8_sELIuz6mAOz4s8ABnIncH3F9R3SWQjuj62TlL00HB4Qi1jGwewJ80DBzg0aVfWfJz2qVExXCTxjK6I16U_Mo2EHpsNQjLOqWWX2o2cPUlZkhzePtoaNlON2mW4koY6yxVOIwmRtuXyv5YPk045Qwu0cLT_4T2QJ7lbXlsVEUA3FcFWTCcZX8TOOlkf-vqr78GOIcpxau-GGVYu8KgX7N9rpLuqAbeMW2dyRt65qUyzVYI9Y8F9TPgF_ZaTieZxRO-M8-59c4_xj_mmgmmfGs8XY3F7o&state=370811c5-9c94-4069-a838-3e6b94118d84 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:57357 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58708 - "GET /login?fresh=true HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:61302 - "GET /login?fresh=true HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:61302 - "GET /callback?code=AQCWLUbh3-OL4codBnqOtS_ysVY_ysmiaG_2wJ_KphaFkYUoF_B84iNuXXllczggDS1jnwFkrR3TOgIRan2uY83hMx_8lC8MJddgJBTxhpI40Q7LsvxQar6K4bubhRQgAuFxkccd6uvWEiFkIYt75e_Sp2ik031J6pXelTxCVqmmoyDqfXuRGJVGWunZVAVAgkLuyAbpkZLuhok3wR8cCzErGETxKJGcXODPlX6V70eJfon6gkbOJMLeBmoGtuw9Gfa6JJHWqnOEgjpTYkBAv-fZZkuEzSQxnTole31fzg_L7kBwj3_FCxLX0U-dTRVf1-7_KEggZv46NkVIfUFmXUwI4gqGzxXQqmhDE0hOfK1lg1imOLKJd8HUtgbGmYfF5JFktqQPDfgdKDnaKNy66WaH92hO_mU9YOkDxbKOAbd4HF2PmgSQxXllKQFkQNzRV6E&state=7d948a33-2ec6-43a6-81e1-59bd96a4a9c5 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50123 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50123 - "GET /callback?code=AQBuCDrLIIWfyvzyd4r7f6KKgcDl6tUjOdWzVGRWc-mSKbfimbm7_KP9X1hDV1CxlK28bu7Nww2Idwh7ghwMMGPwvQYTYSpf12lp6lTQmL5_FoMyf744bTOxgvIbjpEB9KJt0iNocLZInmcdh-oFewMYvz9l483XmlUcezgdjfsrKDDPIhGwIv0JB6f4mw6wyFvBTwSRkvIYW0FGW49-3N69_HjnLM-Hy5pU_OMuHl9fRFfRsxejskCqLuRNd6XCM2JUO8oHvOZ9GJsHS3RR1wQ2D-VF8WHGWAV2L5UgadWdZGv-GFsdZ6Kp61Woo4DWBRqpclwLJH2t8vQ1LC4nv0i2E5RC_tjXfGKdu1uBEgCyFbXv7HLZQbj0WS3B_UhiRYIILBrQJ4lXsg0yj2X9uyrDl7ap7u_McehZokObSTlbrbHCAfUWT2eK7BMY-i4CmtY&state=a073fa32-77ae-498b-83ce-ee2f09709847 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50217 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50219 - "GET /login?fresh=true HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51844 - "GET /login?fresh=true HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:62056 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:62056 - "GET /callback?code=AQB1mpcT70RsBCHmRHnfS3Z8SvVmdhotJ5yaM3HwFgqVxOUEiL74mIbP1r1cM4CNRWAVXX6MF4B8LFhuWGLW6Sky1PRRQ57cHPmmZ7g3fkMFr8dtRKkODVVKzevcEuROgtBL2K-iK902Od0yNVtXrGcaHL0EFsKsDCo8VqcVW6YTpZQy6iqkXBpRKPhVJdf4MizxtriYg5MfueJKISnmf0sP2QiI4ShJbwEkkilHLr1_VRzs6HrLV2rfLugJqNw4z9hJOr-D9fzexOVQgJDPV83ZbOp00eubgMJT4Gdu1B-DdkIFl60Vg1k4yzvhkhRRKzdFvZ-HnyWoIdWxuzCYLPp3PR0QBldI5K5toNQOJpyVrBheGaA-uHggN1quLM8PqT8sIFM924dAAq2TH9gMtGQSIXMdyX6rnscFNiR8Z61XsbYbYfpaOe4qGBNe2F1iyGo&state=33eef562-d660-44af-bdf7-5e35d6298649 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:60350 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53985 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53987 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:56716 - "GET /debug/meta HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:49296 - "GET /debug/meta HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:65240 - "GET /callback?code=AQC03F0gGzCKknq_qIZ34rOAog-okSZK93mgUG34qL3e7F2iYbrE47NeMpb1_un95pJNz3nObZPCRpb2t6zC51ktvLhnu_goc8v4whxOeVk9IV0_PZWwrZQh2Ko1opnjPQqmwQtYwsuimS7HXa8AfyZXSUvtl25T6waUddf3d83JzkgUAyoGw9Mg3x-VSNSFO1c8gh64nbw02vGtXwAn3EtDE-eFquCP8mWKX85lEoLVnd0Xa1gR6XHpgoDtWPRPd55JdLEMq_SAbl6x_gBDA4DwgDV5SJLKB90KXlXGoBsxVE3fG0OoUNR5XcKb9M7dvN0cFU36JIILaLZ48c1xj5esmTbxiYhApA6yFNhCiPeXeWCe4ritVrFotlVTu6QFNrdCi9qQb0F6XsJu9k_NZdeKhmV8XS_K_aALtMv1Z9xa2uWfFQi23UzwQ_4F3IDdMEw&state=92c184b7-7e38-4b5d-b0e1-33226ce596a5 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:65240 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:65240 - "GET /callback?code=AQA4um_mG0RSIntLdqCWgb5wYsXGlNh2aNuSx_hokEMKmc2W9F0XYZ0p3TJdn385A-4Z2rn62wztWW1a68E4M_cGaQAvD7JRSUrja41Kv1YWjpr4e_65bXtNDEj4NIQckCgFLzw0HLEuBQrPOEtwJYHhkyPJo0RFusPTpDb69EXOCbn0T7792yDPf9i4T4ksZkBXb5F3-Y4Pu4YWP71ttLbSWR6b_Cu9CH5db9dBdvB4NPDUYtMFloGcYMGlBHSN-vDxVPNKoZ6_rkwIAodkHmjCiGT88NQkIGT_9bGsY93wNzquTkkTebgj3zbpPK-vP2tLg5pfh30u6CfsH4tFTPnCwjgeIcDo-szxo2Ro19a61v704_v2OI2W3Gt57bSMhHnj2lAtwRdS2kPnj1Uie3T6Kl8MGYxA6azte4Se-cjZP_rHeOV7BFPRU3VpL5zGIlI&state=4062c668-07df-4e60-97ab-7ff0bac0ce10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:58980 - "GET /debug/meta HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63406 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61072 - "GET /debug/page/1141861022333944 HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60690 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55878 - "GET /callback?code=AQBsjYn70YWnxjBy-PlKXeYMf86QjMIN6ksuT2nREidelrP9L5aczgrD0Om7pJeXVgeoqbBpTQIwpvSKvWZI03ZRjIBxLGKpexaIAKbINzwPrg45nb9mkDMXUoKhLU41X6lpF1kyUeiIhKzFHCB6c7LGYf7qJ7GaF8-JvLxtkRGAo1ZW2-VHYoQHYH4ST36oROF6sdNWSHMy_gOiUPPEWlgMnJTCO9NrLw4-m70y8bphlV1jF-TwJeVXvPBg8hm_DN96is8FKJcf0dORy4nb6PJ6SHv4fRzRZuTN6rKyRKzhhmzFT8PO33KyrIu5EXj6IMco0RN8gRXyAYjga0abwqJ9QquhnIZjEAQnhOX4j-H6o9ohl00r3qBaXjLcLgEaKKxTs05QR7nw_1kvrLlN1dn_5YDvYg-pqELlXK0gCEYn8z2n6A0cG3Z6fOQ6MWYGiZM&state=c9ec6d04-56a9-4041-bc92-7f6daca83c19 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51235 - "GET /debug/meta HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54659 - "GET /debug/page/1141861022333944 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49712 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54104 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54104 - "GET /callback?code=AQA7VZnvJNQi8pEel82Z0caLxt8t576PPkIv2khbgl0wk9y5wcuRdkt6TWQRF0czBbfyj71bkkhk0WIPVtcks9hbfu9a6uL70WkDk0CFVW65B81PsgdwJTr_eYgBxjDL6bwmrowG4c20AcxNSOzhdmrJK0WDWD_-4W33UhpLun6e26Uj5lVlJ0YMD8QbL0tSuSshELtZctWNBnUI4Dh6swKBrqHasRdklkEqZowGkMz4G0ud_SqtqMyJiO3mVFufS681ok7A4k5jLv01atndyVyojA_NMyNZbU-vEEyPH4c5rli9a2uhLISKpulOTC12V48iA2sHE2jbtZ3Tq47WXWbhDmhWqrxSGJ8c0jJ2zsh5JxnGlbRLi5C00ztgZpm_0MzvN8E1EzDB74-nQRuxAsJsCMxykKxS5PH-0J1z424vj38mCyI-HYeXH3v1d4Gu9ws&state=9cbc33ef-8f30-4257-90fe-5978e760cc18 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54104 - "GET /fetch-data HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53441 - "GET /fetch-data HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59632 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:59632 - "GET /callback?code=AQBpNc8I2HcWEmv2Tq6FQ5MYOzabZW6Mio4vw43NBI9mRmSqFFY__CiAfB7ZlXN0m9VSri6ClWI5eKkbTXrNfZNAoR3DYxnBVErgthaEbqp-YZZkljVCFmloF5PSTRuXCj91cuEfn6XINCVuz9R-Pr-euJylboEh4kdAoI0xNpIu4k6_2U3vgCvnQ6AR0ywNKVfDGX9jeZ6unlzez6huEBlVVk0v78haYr6eA6UkFS4AousksqwZ6liU8KUxVvQtzt4fHRM333aCxKRUH0tNIIa7NrVtnmZ1a-OnNNeqbRxz3GjBbE8ya8tDb-AMXGr3Hi8H2vrwR54hyK_LJ1jT9X3tmU5VO_5k_lOtw2z3uvh_hWW3oEOvUdha0ZKMWYOISKS1-gt4EvaLmFbe7MoFPgXFkd1cC2m8l89yjaSMh_1gQXB0kYr860zlpOryctZtJ3s&state=5ac6f9e2-f4be-47a0-8faf-8e5babdf1018 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:59632 - "GET /fetch-data HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53755 - "GET /fetch-data HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49864 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64039 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:56388 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60531 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:63775 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52120 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52122 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:64620 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63271 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:63271 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60112 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60112 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54440 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:49342 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49342 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49342 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60385 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60385 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:51703 - "GET /login?fresh=true HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:58615 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:58615 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60675 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:64537 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64537 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64537 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64537 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:51565 - "GET /login?fresh=true HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:64537 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64537 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54499 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54501 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:63021 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:63021 - "GET /fetch-data HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62048 - "GET /login HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:58583 - "GET /callback?code=AQC6X9yoHmlZN9zQqI332oELjcSnzIrmMr4YHetAbg1qTGmC4PChA2PQ8UbGYKoCwxcIXWifhsHQVaiYhL6jSvy0lcMcqzSlL570Eylk6zs333QOl_PpK8xzU2TCxDRnEglSdGKljdhbC8hRU5jb02uWJx5QXqsPr14mVVKavOkANKjPeGKPuu_--ABTzMXru39xRICf5BFjgJWqE5bw0F761758y7B9j-8yq25mMqq-zV0-xSeWC1xryKNtl3hCeTDnkVvawCaehVj3ywuyz5iWPn8NhtHDiZNP8cbUAuR9Adx2X6r695vj49b_gwjVQZJxkHyJpgjCY8eIEQR9i-kjpZxiOa2aFJ-Ln3bMdakzyk2kc3Hwy9IDE9AC7KxaarcpHU9in6MaBcRLqLTIfktyaVE9468u_7UhqJLQWoPMuUpXWLUoxeGj0bPIey3504Q&state=ea9069fd-c486-42df-aa5a-8a8406616f0f HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:58583 - "GET /fetch-data HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60367 - "GET /fetch-data HTTP/1.1" 200 OK
