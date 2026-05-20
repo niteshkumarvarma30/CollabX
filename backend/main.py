@@ -385,6 +385,39 @@ def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
+@app.get("/debug/check-token")
+async def debug_check_token(token: str = Query(...)) -> dict[str, Any]:
+    """Debug endpoint: paste an access token to see what Meta returns."""
+    results: dict[str, Any] = {}
+
+    # Check permissions
+    try:
+        perms = await graph_get("/me/permissions", token)
+        results["permissions"] = perms.get("data", [])
+    except GraphAPIError as exc:
+        results["permissions_error"] = exc.message
+
+    # Check /me/accounts (pages)
+    try:
+        accounts = await graph_get(
+            "/me/accounts", token,
+            {"fields": "id,name,access_token,instagram_business_account", "limit": 25},
+        )
+        results["pages"] = accounts.get("data", [])
+        results["pages_count"] = len(accounts.get("data", []))
+    except GraphAPIError as exc:
+        results["pages_error"] = exc.message
+
+    # Check /me basic info
+    try:
+        me = await graph_get("/me", token, {"fields": "id,name"})
+        results["facebook_user"] = me
+    except GraphAPIError as exc:
+        results["me_error"] = exc.message
+
+    return results
+
+
 @app.get("/login")
 def login(response: Response, fresh: bool = Query(default=False)) -> RedirectResponse:
     require_meta_config()
