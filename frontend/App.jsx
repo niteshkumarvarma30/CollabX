@@ -36,8 +36,7 @@ function getFriendlyError(message) {
   if (message.includes("0 Facebook Pages") || message.includes("No Facebook Pages")) {
     return {
       title: "No Page was returned by Meta",
-      body:
-        "Meta accepted the login, but did not return a Facebook Page for this token. Reconnect and choose the Page and Instagram account in Meta settings.",
+      body: message,
       action: "Use Reconnect with permissions.",
     };
   }
