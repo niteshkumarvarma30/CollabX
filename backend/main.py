@@ -437,7 +437,7 @@ async def callback(
     except GraphAPIError as exc:
         return make_error_redirect(exc.message)
 
-    redirect = RedirectResponse(f"{FRONTEND_URL}/?connected=1")
+    redirect = RedirectResponse(f"{FRONTEND_URL}/?connected=1&session_token={user_id}")
     redirect.set_cookie(
         "instagram_dashboard_user",
         user_id,
@@ -449,12 +449,21 @@ async def callback(
     return redirect
 
 
+from fastapi import Header
+
 @app.get("/fetch-data")
-async def fetch_data(instagram_dashboard_user: str | None = Cookie(default=None)) -> dict[str, Any]:
-    if not instagram_dashboard_user:
+async def fetch_data(
+    instagram_dashboard_user: str | None = Cookie(default=None),
+    authorization: str | None = Header(default=None)
+) -> dict[str, Any]:
+    token = instagram_dashboard_user
+    if authorization and authorization.startswith("Bearer "):
+        token = authorization.split("Bearer ")[1]
+
+    if not token:
         raise HTTPException(status_code=401, detail="Connect Instagram before fetching data.")
 
-    user = load_user_session(instagram_dashboard_user)
+    user = load_user_session(token)
     if not user:
         raise HTTPException(status_code=401, detail="Connect Instagram before fetching data.")
 
@@ -470,7 +479,7 @@ async def fetch_data(instagram_dashboard_user: str | None = Cookie(default=None)
     user["ig_id"] = dashboard_data["user"]["ig_id"]
     user["posts"] = dashboard_data["posts"]
     user["data"] = dashboard_data
-    save_user_session(instagram_dashboard_user, access_token, dashboard_data)
+    save_user_session(token, access_token, dashboard_data)
     return dashboard_data
 
 

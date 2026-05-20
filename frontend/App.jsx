@@ -87,8 +87,15 @@ function App() {
     setLoading(true);
     if (!silent) setError("");
     try {
+      const token = localStorage.getItem("session_token");
+      const headers = {};
+      if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/fetch-data`, {
-        credentials: "include",
+        headers,
+        credentials: "omit",
       });
       const payload = await response.json();
       if (!response.ok) {
@@ -107,7 +114,12 @@ function App() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.get("connected") === "1") {
+    const token = params.get("session_token");
+    if (token) {
+      localStorage.setItem("session_token", token);
+    }
+
+    if (params.get("connected") === "1" || token) {
       fetchData();
     } else {
       fetchData({ silent: true });
