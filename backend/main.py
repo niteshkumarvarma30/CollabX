@@ -86,6 +86,15 @@ def init_db() -> None:
                 )
                 """
             )
+            cursor.execute(
+                """
+                CREATE TABLE IF NOT EXISTS oauth_states (
+                    state TEXT PRIMARY KEY,
+                    user_id TEXT NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+                """
+            )
 
 
 def save_user_session(user_id: str, access_token: str, dashboard_data: dict[str, Any] | None = None) -> None:
@@ -384,6 +393,14 @@ def login(response: Response, fresh: bool = Query(default=False)) -> RedirectRes
     USERS.setdefault(user_id, {})
     OAUTH_STATES[state] = user_id
 
+    # Persist state to database so it survives server restarts on Render
+    with db_connection() as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "INSERT INTO oauth_states (state, user_id) VALUES (%s, %s)",
+                (state, user_id),
+            )
+
     params = {
         "client_id": APP_ID,
         "redirect_uri": REDIRECT_URI,
@@ -421,7 +438,21 @@ async def callback(
     if not code or not state:
         return make_error_redirect("Meta callback did not include code and state.")
 
+    # First check in-memory, then fall back to database
     user_id = OAUTH_STATES.pop(state, None)
+    if not user_id:
+        # Look up from database (survives server restarts on Render)
+        with db_connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    "SELECT user_id FROM oauth_states WHERE state = %s",
+                    (state,),
+                )
+                row = cursor.fetchone()
+                if row:
+                    user_id = row["user_id"]
+                    # Clean up used state
+                    cursor.execute("DELETE FROM oauth_states WHERE state = %s", (state,))
     if not user_id:
         return make_error_redirect("Invalid or expired OAuth state. Please connect again.")
 
